@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>contact</ion-title>
+    <ion-tab-button tabs="add" slot="end" color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-tab-button>
+  </ion-toolbar>
+  <ion-segment [(ngModel)]="segment"  value="default">
+    <ion-segment-button value="default">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="friends">
+      <ion-label>Friends</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="familly">
+      <ion-label>Familly</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content>
+<div [ngSwitch]="segment">
+  <ion-item  *ngSwitchCase="'default'">
+   <ion-list *ngFor="let contact of contacts">
+    <ion-item>
+      {{contact.firstName}} {{contact.lastName}}
+    </ion-item>
+   </ion-list>
+  </ion-item>
+  <ion-item  *ngSwitchCase="'friends'">
+    <app-friends></app-friends>
+  </ion-item>
+  <ion-item  *ngSwitchCase="'familly'">
+    <app-familly></app-familly>
+  </ion-item>
+</div>
+</ion-content>
